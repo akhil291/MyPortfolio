@@ -9,10 +9,14 @@ const Home = () => {
   };
 
   const handleDownloadResume = () => {
-    const resumePath = "/AkhilanandaCV.pdf"; 
-    window.open(resumePath, "_blank");
+    const resumePath = process.env.PUBLIC_URL + "/AkhilanandaCV.pdf"; 
+    const link = document.createElement("a");
+    link.href = resumePath;
+    link.setAttribute("download", "AkhilanandaCV.pdf"); 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
-
   return (
     <section id="home" className="home">
       <div className="home-content">
